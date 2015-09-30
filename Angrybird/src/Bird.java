@@ -8,14 +8,18 @@ import javax.swing.JPanel;
 
 public class Bird extends JPanel {
 
+	private int echelle ;
+	public Bird(int echelle){
+		this.echelle = echelle;
+	}
 	private int posX = -50;
-	private int posY = 550;
+	private int posY = 550*3;
 	Map<Integer, Integer> passage = new HashMap<>();
 
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.white);
 		String tmp = posX + "";
-		if(tmp.charAt(tmp.length()-1) == '0')
+		//if(tmp.charAt(tmp.length()-1) == '0')
 			passage.put(posX, posY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		for (int i : passage.keySet()) {

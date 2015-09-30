@@ -6,12 +6,10 @@ public class Plateau extends JFrame{
 	private int origineX;
 	private int origineY;
 	int echelle;
-	Bird pan = new Bird();
-	public Plateau(){/*
-		this.taille=taille;
-		this.origineX = origineX;
-		this.origineY = origineY;
-		this.echelle = echelle;*/
+
+	Bird pan = new Bird(echelle);
+	public Plateau(){
+		this.echelle = 3;
 		this.setTitle("Modelisation");
 		this.setSize(800,600); 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,16 +20,20 @@ public class Plateau extends JFrame{
 	}private void go() {
 	    int x = pan.getPosX(), y = pan.getPosY();
 
-
+	    int t =-30;
 	    while (true) {
-	        pan.setPosX(++x);
-	        pan.setPosY(--y);
+	    	t++;
+	        y = (int) (2 * Math.pow(t, 2) + 6* t +5);
+	    	x= x+40;
+	        pan.setPosX(x++/echelle);
+	        System.out.println(x+"  "+y);
+	        pan.setPosY(y/echelle);
 	        
 	      pan.repaint();
 
 	      try {
 
-	        Thread.sleep(5);
+	        Thread.sleep(100);
 
 	      } catch (InterruptedException e) {
 
