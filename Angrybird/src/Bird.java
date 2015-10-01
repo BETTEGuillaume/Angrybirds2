@@ -12,10 +12,11 @@ import javax.swing.JPanel;
 
 public class Bird extends JPanel {
 
+	@SuppressWarnings("unused")
 	private Image bird;
+	@SuppressWarnings("unused")
 	private Image background;
 	private int echelle ;
-	boolean lol = true;
 	
 	//constructeur
 	public Bird(int echelle){
@@ -24,6 +25,7 @@ public class Bird extends JPanel {
 	
 	private int posX = -50;
 	private int posY = 550*3;
+	//Pourquoi un *3 ?
 	
 	Map<Integer, Integer> passage = new HashMap<>();
 
@@ -32,9 +34,9 @@ public class Bird extends JPanel {
 		//initimg();
 		
 		g.setColor(Color.white);
-		String tmp = posX + "";
+		//String tmp = posX + "";
 		//if(tmp.charAt(tmp.length()-1) == '0')
-			passage.put(posX, posY);
+		passage.put(posX, posY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		
@@ -71,7 +73,8 @@ public class Bird extends JPanel {
 	}
 	
 	
-	protected void initimg(){
+	@SuppressWarnings("unused")
+	private void initimg(){
 		try{
 			bird = ImageIO.read(new File("img/birds/red/bird.png"));
 			background = ImageIO.read(new File("img/background.jpg"));

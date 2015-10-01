@@ -2,16 +2,13 @@ import javax.swing.JFrame;
 
 public class Plateau extends JFrame{
 	
-	private int taille ;
-	private int origineX;
-	private int origineY;
-	int echelle;
+	private int echelle;
 
 	Bird pan = new Bird(echelle);
 	
 	//constructeur
 	public Plateau(){
-		this.echelle = 3;
+		this.echelle = Constantes.echelle;
 		this.setTitle(Constantes.titre);
 		this.setSize(Constantes.largeur_ecran, Constantes.hauteur_ecran);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

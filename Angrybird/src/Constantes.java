@@ -1,7 +1,7 @@
-import java.awt.Image;
-
 
 public class Constantes {
+	
+	final static int echelle = 3;
 	
 	final static int origineX = 0;
 	final static int origineY = 0;
