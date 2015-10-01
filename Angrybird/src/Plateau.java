@@ -26,7 +26,8 @@ public class Plateau extends JFrame{
 
 	    int t =-30;
 	    
-	    while (true) {
+	    //condition d'arrêt à revoir
+	    while (x<2250) {
 	    	t++;
 	        y = (int) (2 * Math.pow(t, 2) + 6* t +5);
 	    	x= x+40;
@@ -38,7 +39,7 @@ public class Plateau extends JFrame{
 
 	      try {
 
-	        Thread.sleep(30);
+	        Thread.sleep(50);
 
 	      } catch (InterruptedException e) {
 

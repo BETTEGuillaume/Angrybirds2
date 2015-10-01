@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 
 public class Constantes {
 	
@@ -9,5 +11,4 @@ public class Constantes {
 	
 	final static String titre = "Angry Nerds";
 	
-
 }
