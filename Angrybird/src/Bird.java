@@ -9,9 +9,12 @@ import javax.swing.JPanel;
 public class Bird extends JPanel {
 
 	private int echelle ;
+	
+	//constructeur
 	public Bird(int echelle){
 		this.echelle = echelle;
 	}
+	
 	private int posX = -50;
 	private int posY = 550*3;
 	Map<Integer, Integer> passage = new HashMap<>();
@@ -22,11 +25,15 @@ public class Bird extends JPanel {
 		//if(tmp.charAt(tmp.length()-1) == '0')
 			passage.put(posX, posY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
 		for (int i : passage.keySet()) {
+			//dessin de la trajectoire en pointillés
 			g.setColor(Color.black);
 			g.fillOval(i+22, passage.get(i)+12, 3, 3);
 		}
-		g.setColor(Color.red);
+		
+		//dessin de l'oiseau
+		g.setColor(Color.blue);
 		g.fillOval(posX, posY, 50, 30);
 
 	}
