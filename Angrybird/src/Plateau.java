@@ -24,10 +24,10 @@ public class Plateau extends JFrame{
 	    int t =-30;
 	    
 	    //condition d'arrêt à revoir
-	    while (x<2250) {
+	    while (x < 1990) {
 	    	t++;
 	        y = (int) (2 * Math.pow(t, 2) + 6* t +5);
-	    	x= x+40;
+	    	x= x+35;
 	        pan.setPosX(x++/echelle);
 	        System.out.println(x+"  "+y);
 	        pan.setPosY(y/echelle);
