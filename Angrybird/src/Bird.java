@@ -24,9 +24,7 @@ public class Bird extends JPanel {
 	}
 	
 	private int posX = -50;
-	private int posY = 550*3;
-	//Pourquoi un *3 ?
-	
+	private int posY = 550;
 	Map<Integer, Integer> passage = new HashMap<>();
 
 	public void paintComponent(Graphics g) {
