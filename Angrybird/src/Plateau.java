@@ -1,4 +1,6 @@
-import java.util.Random;
+
+import java.awt.Color;
+
 
 import javax.swing.JFrame;
 
@@ -8,20 +10,29 @@ public class Plateau extends JFrame{
 	private int echelle;
 
 	Bird pan = new Bird(echelle);
-	Random r = new Random();
 	
 	//constructeur
 	public Plateau(){
 		this.echelle = Constantes.echelle;
 		this.setTitle(Constantes.titre);
 		this.setSize(Constantes.largeur_ecran, Constantes.hauteur_ecran);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	    this.setContentPane(pan);
 	    this.setVisible(true);
+	    
+	    initObstacles();
+
 	    int x=1;
+<<<<<<< HEAD
 	    while(pan.isCible1() || pan.isCible2() || pan.isCible3()){
+=======
+	    while(x==1){
+
+>>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 	    go();
+	    
 	    }
 	}
 	
@@ -31,17 +42,21 @@ public class Plateau extends JFrame{
 		pan.setPosX(-50);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
-
 	    int t =-30;
 	    
+<<<<<<< HEAD
 	    int a = (r.nextInt(13))+1;  
 	    int b = r.nextInt(13);
 	    int c = r.nextInt(13);
 	    
+=======
+
+	    //condition d'arrêt à revoir
+>>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 	    
-	    //condition d'arrï¿½t ï¿½ revoir
-	    while (x < 1990) {
+	    do{	    	
 	    	t++;
+<<<<<<< HEAD
 	        //y = (int) (2 * Math.pow(t, 2) + 6* t +5);
 	    	// y = (int) (a* Math.pow(t, 3) + b*t +c);
 	    	//y = (int) (0.5*a* Math.pow(t, 3) + b* Math.pow(t, 2) +c*t);
@@ -53,29 +68,43 @@ public class Plateau extends JFrame{
 	    	//x= x+35;
 	    	//x=(int) ((500*Math.cos(8*t))*(Math.sin(t))+500);     //rosace
 	    	//x= (int) (b*80*Math.sin(t)+500);
+=======
+	    	
+	        pan.setPosY((int) (2 * Math.pow(t,2) + 6*t + 5));
+	        pan.setPosX(pan.getPosX() + 35);
+	        
+	        y = (int) (2 * Math.pow(t, 2) + 6*t + 5);	        
+	    	x = x + 35;
+
+>>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 	        pan.setPosX(x++/echelle);
-	        System.out.println(x+"  "+y);
 	        pan.setPosY(y/echelle);
+	        System.out.println(pan.getPosX() +" "+pan.getPosY());
 	        
 	      pan.repaint();
 
 	      try {
-
-	        Thread.sleep(50);
-
+	    	  Thread.sleep(40);
 	      } catch (InterruptedException e) {
-
-	        e.printStackTrace();
-
+	    	  e.printStackTrace();
 	      }
 
-	    }
+	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 80));
 
 	  }
 
-
 	  public static void main(String[] args) {
 	    new Plateau();
+	  }
+	  
+	  
+	  public void initObstacles(){
+		  
+		  Obstacle cible = new Obstacle(600,400, Color.GREEN, true);
+		  Obstacle cible2 = new Obstacle(500,250, Color.green, true);
+			
+		  Bird.obstacles.add(cible);
+		  Bird.obstacles.add(cible2);
 	  }
 
 

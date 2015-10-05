@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.List;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,29 +18,24 @@ public class Bird extends JPanel {
 	private Image bird;
 	private Image background;
 	private int echelle;
+	static ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
 	// constructeur
 	public Bird(int echelle) {
 		this.echelle = echelle;
 	}
 	
-	private boolean cible1 = true;
-	private boolean cible2 = true;
-	private boolean cible3 = true;
 	private int posX = -50;
 	private int posY = 550;
 	Map<Integer, Integer> passage = new HashMap<>();
 	
-	//liste contenant tous les obstacles
-	List obstacles = new List();
-
+	
 	public void paintComponent(Graphics g) {
+		
 		// initialisation des images
 		// initimg();
 
 		g.setColor(Color.white);
-		// String tmp = posX + "";
-		// if(tmp.charAt(tmp.length()-1) == '0')
 		passage.put(posX, posY);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
@@ -47,14 +43,14 @@ public class Bird extends JPanel {
 		// dessin de la trajectoire en pointillï¿½s
 
 		g.setColor(Color.black);
-
 		for (int i : passage.keySet())
-			g.fillOval(i + 22, passage.get(i) + 12, 3, 3);
-
+			g.fillOval(i + 40, passage.get(i) + 40, 3, 3);
 		
+
 		// dessin de l'oiseau
 
 		g.setColor(Color.blue);
+<<<<<<< HEAD
 		g.fillOval(posX, posY, 50, 30);
 		// g.drawImage(bird,posX,posY,50,50,null);
 		if (posX >= 550 && posX <= 650 && posY >= 350 && posY <= 450) {
@@ -79,7 +75,23 @@ public class Bird extends JPanel {
 			g.setColor(Color.red);
 			g.fillOval(400, 400, 100, 100);
 		}
+=======
+		g.fillOval(posX, posY, 80, 80);
+>>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 
+		
+		//dessin des obstacles et détection des collisions
+		
+		g.setColor(Constantes.couleur_obstacle);
+		for(Obstacle e : obstacles){
+			if(e.isActif()){
+				g.fillRect(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
+			}
+			if(posX > e.getX() - Constantes.taille_obstacle && posX < e.getX() + Constantes.taille_obstacle &&
+					posY > e.getY() - Constantes.taille_obstacle && posY < e.getY() + Constantes.taille_obstacle){
+				e.setActif(false);
+			}	
+		}
 	}
 
 	public int getPosX() {
