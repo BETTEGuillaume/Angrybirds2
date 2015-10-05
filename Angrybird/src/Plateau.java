@@ -2,6 +2,8 @@
 import java.awt.Color;
 
 
+import java.util.Random;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
@@ -23,16 +25,9 @@ public class Plateau extends JFrame{
 	    this.setVisible(true);
 	    
 	    initObstacles();
-
-	    int x=1;
-<<<<<<< HEAD
-	    while(pan.isCible1() || pan.isCible2() || pan.isCible3()){
-=======
-	    while(x==1){
-
->>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
-	    go();
 	    
+	    while(ilResteDesObstacles()){
+	    	go();
 	    }
 	}
 	
@@ -44,39 +39,28 @@ public class Plateau extends JFrame{
 	    int x = pan.getPosX(), y = pan.getPosY();
 	    int t =-30;
 	    
-<<<<<<< HEAD
+	    Random r = new Random();
 	    int a = (r.nextInt(13))+1;  
 	    int b = r.nextInt(13);
 	    int c = r.nextInt(13);
-	    
-=======
 
 	    //condition d'arr�t � revoir
->>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 	    
 	    do{	    	
 	    	t++;
-<<<<<<< HEAD
+
 	        //y = (int) (2 * Math.pow(t, 2) + 6* t +5);
-	    	// y = (int) (a* Math.pow(t, 3) + b*t +c);
+	    	y = (int) (a* Math.pow(t, 3) + b*t +c);
 	    	//y = (int) (0.5*a* Math.pow(t, 3) + b* Math.pow(t, 2) +c*t);
 	    	//y= (int) ((a* Math.pow(t, 2)*b*Math.sin(t*Math.PI)/(3-Math.exp(t))));
 	    	//y= (int) (a*20*Math.cos(t)+500);
 	    	//y = (int) ((500*Math.cos(8*t))*(Math.cos(t))+800);    //rosace
-	    	y = (int) ((3*Math.pow(t, 2))-(2*Math.pow(t, 3))+800); //bézier
-	    	x = (int) ((-3*Math.pow(t, 2))+(3*t)+500);             //bézier 
-	    	//x= x+35;
+	    	//y = (int) ((3*Math.pow(t, 2))-(2*Math.pow(t, 3))+800); //bézier
+	    	//x = (int) ((-3*Math.pow(t, 2))+(3*t)+500);             //bézier 
+	    	x= x+35;
 	    	//x=(int) ((500*Math.cos(8*t))*(Math.sin(t))+500);     //rosace
 	    	//x= (int) (b*80*Math.sin(t)+500);
-=======
-	    	
-	        pan.setPosY((int) (2 * Math.pow(t,2) + 6*t + 5));
-	        pan.setPosX(pan.getPosX() + 35);
-	        
-	        y = (int) (2 * Math.pow(t, 2) + 6*t + 5);	        
-	    	x = x + 35;
 
->>>>>>> 7f4441f44fcfff2bc3e70242c318b8d5bdf8893e
 	        pan.setPosX(x++/echelle);
 	        pan.setPosY(y/echelle);
 	        System.out.println(pan.getPosX() +" "+pan.getPosY());
@@ -97,14 +81,24 @@ public class Plateau extends JFrame{
 	    new Plateau();
 	  }
 	  
+	  public boolean ilResteDesObstacles(){
+		  for(Obstacle o : Bird.obstacles){
+			  if(o.isActif())
+				  return true;
+		  }
+		  return false;
+	  }
+	  
 	  
 	  public void initObstacles(){
 		  
-		  Obstacle cible = new Obstacle(600,400, Color.GREEN, true);
-		  Obstacle cible2 = new Obstacle(500,250, Color.green, true);
-			
+		  Obstacle cible = new Obstacle(600,400);
+		  Obstacle cible2 = new Obstacle(500,250);
+		  Obstacle cible3 = new Obstacle(700,100);
+		 
 		  Bird.obstacles.add(cible);
 		  Bird.obstacles.add(cible2);
+		  Bird.obstacles.add(cible3);
 	  }
 
 

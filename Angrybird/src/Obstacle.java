@@ -18,7 +18,6 @@ public class Obstacle {
 	public Obstacle(int x, int y){
 		this.x=x;
 		this.y=y;
-		this.c = Color.BLACK;
 		this.actif = true;
 	}
 
@@ -30,18 +29,15 @@ public class Obstacle {
 	 * @param c Couleur de l'obstacle
 	 * @param b Activation de l'obstacle
 	 */
-	public Obstacle(int x, int y, Color c, boolean b){
+	public Obstacle(int x, int y, boolean b){
 		this.x=x;
 		this.y=y;
-		this.c=c;
 		actif=b;
 	}
 		
 	private int x;
 	private int y;
-	private Color c;
 	private boolean actif;
-	
 	
 	//Getters et setters
 	
@@ -61,14 +57,6 @@ public class Obstacle {
 		this.y = y;
 	}
 
-	public Color getC() {
-		return c;
-	}
-
-	public void setC(Color c) {
-		this.c = c;
-	}
-
 	public boolean isActif() {
 		return actif;
 	}
@@ -79,8 +67,6 @@ public class Obstacle {
 
 	@Override
 	public String toString() {
-		return "Obstacle [x=" + x + ", y=" + y + ", c=" + c + ", actif="
-				+ actif + "]";
+		return "Obstacle [x=" + x + ", y=" + y + ", actif=" + actif + "]";
 	}
-		
 }
