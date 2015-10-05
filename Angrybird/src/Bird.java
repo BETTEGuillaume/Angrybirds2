@@ -44,7 +44,7 @@ public class Bird extends JPanel {
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 
-		// dessin de la trajectoire en pointillés
+		// dessin de la trajectoire en pointillï¿½s
 
 		g.setColor(Color.black);
 
@@ -63,6 +63,7 @@ public class Bird extends JPanel {
 		if (cible1) {
 			g.setColor(Color.red);
 			g.fillOval(600, 400, 100, 100);
+			
 		}
 		if (posX >= 450 && posX <= 550 && posY >= 150 && posY <= 250) {
 			cible2 = false;
@@ -105,4 +106,39 @@ public class Bird extends JPanel {
 			e.getMessage();
 		}
 	}
+
+	public Image getBird() {
+		return bird;
+	}
+
+	/*public Image getBackground() {
+		return background;
+	}*/
+
+	public int getEchelle() {
+		return echelle;
+	}
+
+	public boolean isCible1() {
+		return cible1;
+	}
+
+	public boolean isCible2() {
+		return cible2;
+	}
+
+	public boolean isCible3() {
+		return cible3;
+	}
+
+	public Map<Integer, Integer> getPassage() {
+		return passage;
+	}
+
+	public List getObstacles() {
+		return obstacles;
+	}
+	
+	
+	
 }

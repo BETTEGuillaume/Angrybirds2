@@ -20,7 +20,7 @@ public class Plateau extends JFrame{
 	    this.setContentPane(pan);
 	    this.setVisible(true);
 	    int x=1;
-	    while(x==1){
+	    while(pan.isCible1() || pan.isCible2() || pan.isCible3()){
 	    go();
 	    }
 	}
@@ -34,17 +34,25 @@ public class Plateau extends JFrame{
 
 	    int t =-30;
 	    
-	    int a = (r.nextInt(10))+1;  
-	    int b = r.nextInt(10);
-	    int c = r.nextInt(10);
+	    int a = (r.nextInt(13))+1;  
+	    int b = r.nextInt(13);
+	    int c = r.nextInt(13);
 	    
 	    
 	    //condition d'arr�t � revoir
 	    while (x < 1990) {
 	    	t++;
 	        //y = (int) (2 * Math.pow(t, 2) + 6* t +5);
-	    	y = (int) (a* Math.pow(t, 2) + b* t +c);
-	    	x= x+35;
+	    	// y = (int) (a* Math.pow(t, 3) + b*t +c);
+	    	//y = (int) (0.5*a* Math.pow(t, 3) + b* Math.pow(t, 2) +c*t);
+	    	//y= (int) ((a* Math.pow(t, 2)*b*Math.sin(t*Math.PI)/(3-Math.exp(t))));
+	    	//y= (int) (a*20*Math.cos(t)+500);
+	    	//y = (int) ((500*Math.cos(8*t))*(Math.cos(t))+800);    //rosace
+	    	y = (int) ((3*Math.pow(t, 2))-(2*Math.pow(t, 3))+800); //bézier
+	    	x = (int) ((-3*Math.pow(t, 2))+(3*t)+500);             //bézier 
+	    	//x= x+35;
+	    	//x=(int) ((500*Math.cos(8*t))*(Math.sin(t))+500);     //rosace
+	    	//x= (int) (b*80*Math.sin(t)+500);
 	        pan.setPosX(x++/echelle);
 	        System.out.println(x+"  "+y);
 	        pan.setPosY(y/echelle);
