@@ -1,4 +1,7 @@
+
 import java.awt.Color;
+
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
@@ -20,13 +23,24 @@ public class Plateau extends JFrame{
 	    this.setVisible(true);
 	    
 	    initObstacles();
+
+	    int x=1;
+	    while(x==1){
+
 	    go();
+	    
+	    }
 	}
 	
 	private void go() {
+	
+		pan.setPosY(550);
+		pan.setPosX(-50);
+		
 	    int x = pan.getPosX(), y = pan.getPosY();
 	    int t =-30;
 	    
+
 	    //condition d'arrêt à revoir
 	    
 	    do{	    	
@@ -37,7 +51,7 @@ public class Plateau extends JFrame{
 	        
 	        y = (int) (2 * Math.pow(t, 2) + 6*t + 5);	        
 	    	x = x + 35;
-	    	
+
 	        pan.setPosX(x++/echelle);
 	        pan.setPosY(y/echelle);
 	        System.out.println(pan.getPosX() +" "+pan.getPosY());
@@ -45,12 +59,12 @@ public class Plateau extends JFrame{
 	      pan.repaint();
 
 	      try {
-	    	  Thread.sleep(50);
+	    	  Thread.sleep(40);
 	      } catch (InterruptedException e) {
 	    	  e.printStackTrace();
 	      }
 
-	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 70));
+	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 80));
 
 	  }
 
