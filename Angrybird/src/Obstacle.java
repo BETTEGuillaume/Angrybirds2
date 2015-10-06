@@ -1,4 +1,3 @@
-import java.awt.Color;
 
 /**
  * La classe Obstacle représente tous les objets "obstacle" utilisés dans le projet.
@@ -10,7 +9,7 @@ public class Obstacle {
 	
 	/**
 	 * Constructeur Obstacle(int,int)
-	 * La couleur de l'obstacle est initialisée à NOIR, et celui-ci est activé par défaut.
+	 * L'obstacle est activé par défaut, et sa couleur se trouve dans la classe Constantes.
 	 * 
 	 * @param x Coordonnée en x de l'obstacle
 	 * @param y Coordonnée en y de l'obstacle
@@ -22,11 +21,10 @@ public class Obstacle {
 	}
 
 	/**
-	 * Constructeur Obstacle(int,int,Color,boolean)
+	 * Constructeur Obstacle(int,int,boolean)
 	 * 
 	 * @param x Coordonnée en x de l'obstacle
 	 * @param y Coordonnée en y de l'obstacle
-	 * @param c Couleur de l'obstacle
 	 * @param b Activation de l'obstacle
 	 */
 	public Obstacle(int x, int y, boolean b){

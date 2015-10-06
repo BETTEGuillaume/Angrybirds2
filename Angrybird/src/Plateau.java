@@ -1,7 +1,3 @@
-
-import java.awt.Color;
-
-
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -26,13 +22,22 @@ public class Plateau extends JFrame{
 	    
 	    initObstacles();
 	    
+	    
+	    //tant qu'il reste des obstacles encore actifs
 	    while(ilResteDesObstacles()){
 	    	go();
 	    }
 	}
 	
+	/**
+	 * La fonction go() est la boucle principale du programme, dans laquelle se font
+	 * les incrémentations de x et y, le calcul des points de la trajectoire, et
+	 * l'appel de la fonction 'repaint' de l'oiseau.
+	 */
 	private void go() {
 	
+		//position de départ de l'oiseau
+		
 		pan.setPosY(550);
 		pan.setPosX(-50);
 		
@@ -40,17 +45,16 @@ public class Plateau extends JFrame{
 	    int t =-30;
 	    
 	    Random r = new Random();
-	    int a = (r.nextInt(13))+1;  
-	    int b = r.nextInt(13);
-	    int c = r.nextInt(13);
-
-	    //condition d'arrêt à revoir
+	    int a = (r.nextInt(6)+1);  
+	    int b = r.nextInt(6);
+	    int c = r.nextInt(6);
 	    
-	    do{	    	
+	    do{	    
 	    	t++;
 
-	        //y = (int) (2 * Math.pow(t, 2) + 6* t +5);
-	    	y = (int) (a* Math.pow(t, 3) + b*t +c);
+	        y = (int) (a * Math.pow(t, 2) + b* t +c+1);	        
+	        //y = (int) (a * Math.pow(t, 2) + (a-b+c)* t +5); //test Rémy	        
+	    	//y = (int) (a* Math.pow(t, 3) + b*t +c);
 	    	//y = (int) (0.5*a* Math.pow(t, 3) + b* Math.pow(t, 2) +c*t);
 	    	//y= (int) ((a* Math.pow(t, 2)*b*Math.sin(t*Math.PI)/(3-Math.exp(t))));
 	    	//y= (int) (a*20*Math.cos(t)+500);
@@ -74,31 +78,45 @@ public class Plateau extends JFrame{
 	      }
 
 	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 80));
+	    
+	    pan.getPassage().clear();
 
 	  }
 
+	
 	  public static void main(String[] args) {
 	    new Plateau();
 	  }
 	  
+	  
+	  /**
+	   * Cette fonction parcourt la liste des obstacles pour déterminer si il en reste 
+	   * au moins un d'actif.
+	   * @return Si plus aucun obstacle n'est actif, retourne faux ; sinon, vrai.
+	   */
 	  public boolean ilResteDesObstacles(){
-		  for(Obstacle o : Bird.obstacles){
+		  for(Obstacle o : pan.getObstacles()){
 			  if(o.isActif())
 				  return true;
 		  }
 		  return false;
 	  }
 	  
-	  
+	  /**
+	   * Cette fonction initialise les obstacles et les range dans la liste d'obstacles,
+	   * utilisée dans le déroulement du programme.
+	   */
 	  public void initObstacles(){
 		  
 		  Obstacle cible = new Obstacle(600,400);
 		  Obstacle cible2 = new Obstacle(500,250);
-		  Obstacle cible3 = new Obstacle(700,100);
-		 
-		  Bird.obstacles.add(cible);
-		  Bird.obstacles.add(cible2);
-		  Bird.obstacles.add(cible3);
+		  Obstacle cible3 = new Obstacle(800,400);
+		  Obstacle cible4 = new Obstacle(700,100);
+
+		  pan.getObstacles().add(cible);
+		  pan.getObstacles().add(cible2);
+		  pan.getObstacles().add(cible3);
+		  pan.getObstacles().add(cible4);
 	  }
 
 
