@@ -2,9 +2,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.List;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +32,7 @@ public class Bird extends JPanel {
 	public Bird(int echelle) {
 		this.echelle = echelle;
 		// initialisation des images
+		if(Constantes.graphique)
 		initimg();
 	}
 
@@ -45,7 +43,7 @@ public class Bird extends JPanel {
 
 	public void paintComponent(Graphics g) {
 
-		if(Constantes.graphique){
+		if(Constantes.graphique && !Constantes.collision){
 			
 			//dessin du background
 
@@ -63,24 +61,24 @@ public class Bird extends JPanel {
 			// dessin de l'oiseau
 
 			g.drawImage(bird, posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau,null);
-
+		
 
 			//dessin des obstacles et détection des collisions
 
 			g.setColor(Constantes.couleur_obstacle);
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
-					//g.fillRect(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
 					g.drawImage(obstacle, e.getX(), e.getY(), Constantes.taille_obstacle, Constantes.taille_obstacle, null);
 				}
 				if(posX > e.getX() - Constantes.taille_obstacle && posX < e.getX() + Constantes.taille_obstacle &&
 						posY > e.getY() - Constantes.taille_obstacle && posY < e.getY() + Constantes.taille_obstacle){
+					//Constantes.collision = true;
 					e.setActif(false);
 				}	
 			}
 		
 
-		}else{
+		}else if(!Constantes.collision){
 
 			//dessin du background
 
@@ -107,10 +105,11 @@ public class Bird extends JPanel {
 			g.setColor(Constantes.couleur_obstacle);
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
-					g.fillRect(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
+					g.drawOval(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
 				}
 				if(posX > e.getX() - Constantes.taille_obstacle && posX < e.getX() + Constantes.taille_obstacle &&
 						posY > e.getY() - Constantes.taille_obstacle && posY < e.getY() + Constantes.taille_obstacle){
+					//Constantes.collision = true;
 					e.setActif(false);
 				}	
 			}
@@ -135,12 +134,13 @@ public class Bird extends JPanel {
 
 	private void initimg() {
 		try {
-			bird = ImageIO.read(new File("img/birds/red/bird.png"));
-			background = ImageIO.read(new File("img/background.jpg"));
-			slingshot = ImageIO.read(new File("img/slingshot.png"));
-			obstacle = ImageIO.read(new File("img/caisse.png"));
+			bird = ImageIO.read(this.getClass().getResource("img/birds/red/bird.png"));
+			background = ImageIO.read(this.getClass().getResource("img/background.jpg"));
+			slingshot = ImageIO.read(this.getClass().getResource("img/slingshot.png"));
+			obstacle = ImageIO.read(this.getClass().getResource("img/caisse.png"));
+			
 		} catch (Exception e) {
-			e.getMessage();
+			e.printStackTrace();
 		}
 	}
 
