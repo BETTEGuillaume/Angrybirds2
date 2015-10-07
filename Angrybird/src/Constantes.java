@@ -15,8 +15,7 @@ public class Constantes {
 	final static Color couleur_obstacle = Color.GREEN;
 	final static int taille_oiseau = 40;
 	
-	final static boolean graphique = true;
-	static boolean collision = false;
+	final static boolean graphique = false;
 	
 	final static String titre = "Angry Nerds";
 	
