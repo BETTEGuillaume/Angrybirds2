@@ -70,8 +70,9 @@ public class Bird extends JPanel {
 			g.setColor(Constantes.couleur_obstacle);
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
-					//g.fillRect(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
 					g.drawImage(obstacle, e.getX(), e.getY(), Constantes.taille_obstacle, Constantes.taille_obstacle, null);
+				}else{
+					g.drawRect(e.getX(), e.getY(), Constantes.taille_obstacle, Constantes.taille_obstacle);
 				}
 				if(posX > e.getX() - Constantes.taille_obstacle && posX < e.getX() + Constantes.taille_obstacle &&
 						posY > e.getY() - Constantes.taille_obstacle && posY < e.getY() + Constantes.taille_obstacle){
@@ -99,15 +100,18 @@ public class Bird extends JPanel {
 			// dessin de l'oiseau
 
 			g.setColor(Color.blue);
-			g.fillOval(posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau);
+			g.drawOval(posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau);
 
 
 			//dessin des obstacles et détection des collisions
 
-			g.setColor(Constantes.couleur_obstacle);
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
-					g.fillRect(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
+					g.setColor(Constantes.couleur_obstacle);
+					g.drawOval(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
+				}else{
+					g.setColor(Constantes.couleur_obstacle_touche);
+					g.drawOval(e.getX(), e.getY(), Constantes.taille_obstacle, Constantes.taille_obstacle);
 				}
 				if(posX > e.getX() - Constantes.taille_obstacle && posX < e.getX() + Constantes.taille_obstacle &&
 						posY > e.getY() - Constantes.taille_obstacle && posY < e.getY() + Constantes.taille_obstacle){

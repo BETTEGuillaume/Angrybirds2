@@ -48,12 +48,17 @@ public class Plateau extends JFrame{
 	    int a = (r.nextInt(6)+1);  
 	    int b = r.nextInt(6);
 	    int c = r.nextInt(6);
+	    int d = r.nextInt(20)+30;
 	    
 	    do{	    
 	    	t++;
 
-	        y = (int) (a * Math.pow(t, 2) + b* t +c+1);	        
-	        //y = (int) (a * Math.pow(t, 2) + (a-b+c)* t +5); //test RÈmy	        
+	        //y = (int) (a * Math.pow(t, 2) + b* t +c+1);	    
+	    	
+	    	//test RÈmy
+	        y = (int) (a * Math.pow(t, 2) + (a-b+c)* t +5);	        
+	    	x+=d;
+	    	
 	    	//y = (int) (a* Math.pow(t, 3) + b*t +c);
 	    	//y = (int) (0.5*a* Math.pow(t, 3) + b* Math.pow(t, 2) +c*t);
 	    	//y= (int) ((a* Math.pow(t, 2)*b*Math.sin(t*Math.PI)/(3-Math.exp(t))));
@@ -61,13 +66,13 @@ public class Plateau extends JFrame{
 	    	//y = (int) ((500*Math.cos(8*t))*(Math.cos(t))+800);    //rosace
 	    	//y = (int) ((3*Math.pow(t, 2))-(2*Math.pow(t, 3))+800); //b√©zier
 	    	//x = (int) ((-3*Math.pow(t, 2))+(3*t)+500);             //b√©zier 
-	    	x= x+35;
+	    	//x= x+35;
 	    	//x=(int) ((500*Math.cos(8*t))*(Math.sin(t))+500);     //rosace
 	    	//x= (int) (b*80*Math.sin(t)+500);
 
 	        pan.setPosX(x++/echelle);
 	        pan.setPosY(y/echelle);
-	        System.out.println(pan.getPosX() +" "+pan.getPosY());
+	        //System.out.println(pan.getPosX() +" "+pan.getPosY());
 	        
 	      pan.repaint();
 
@@ -77,9 +82,11 @@ public class Plateau extends JFrame{
 	    	  e.printStackTrace();
 	      }
 
-	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 80));
+	    }while((pan.getPosX()<Constantes.largeur_ecran) && (pan.getPosY()<Constantes.hauteur_ecran - 2*Constantes.taille_oiseau));
 	    
-	    pan.getPassage().clear();
+	    //rÈinitialisation de la trajectoire
+	    if(!Constantes.traces_trajectoire)
+	    	pan.getPassage().clear();
 
 	  }
 
@@ -87,6 +94,8 @@ public class Plateau extends JFrame{
 	  public static void main(String[] args) {
 	    new Plateau();
 	  }
+	  
+	  
 	  
 	  
 	  /**
@@ -108,15 +117,17 @@ public class Plateau extends JFrame{
 	   */
 	  public void initObstacles(){
 		  
-		  Obstacle cible = new Obstacle(600,400);
-		  Obstacle cible2 = new Obstacle(500,250);
-		  Obstacle cible3 = new Obstacle(800,400);
-		  Obstacle cible4 = new Obstacle(700,100);
+		  Obstacle cible = new Obstacle(740,68);
+		  Obstacle cible2 = new Obstacle(670,168);
+		  Obstacle cible3 = new Obstacle(720,268);
+		  Obstacle cible4 = new Obstacle(690,368);
+		  Obstacle cible5 = new Obstacle(700,468);
 
 		  pan.getObstacles().add(cible);
 		  pan.getObstacles().add(cible2);
 		  pan.getObstacles().add(cible3);
 		  pan.getObstacles().add(cible4);
+		  pan.getObstacles().add(cible5);
 	  }
 
 
