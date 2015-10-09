@@ -117,17 +117,24 @@ public class Plateau extends JFrame{
 	   */
 	  public void initObstacles(){
 		  
+		  
 		  Obstacle cible = new Obstacle(740,68);
 		  Obstacle cible2 = new Obstacle(670,168);
 		  Obstacle cible3 = new Obstacle(720,268);
 		  Obstacle cible4 = new Obstacle(690,368);
 		  Obstacle cible5 = new Obstacle(700,468);
+		  
+		  ObstacleMouvant cibletest = new ObstacleMouvant(900,20);
+		  cibletest.setLimites_y(new int[]{20,468});
 
+		  
 		  pan.getObstacles().add(cible);
 		  pan.getObstacles().add(cible2);
 		  pan.getObstacles().add(cible3);
 		  pan.getObstacles().add(cible4);
 		  pan.getObstacles().add(cible5);
+		  
+		  pan.getObstacles().add(cibletest);
 	  }
 
 
