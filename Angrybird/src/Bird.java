@@ -22,6 +22,11 @@ public class Bird extends JPanel {
 	
 	private int echelle;
 	private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+	private int z;
+    private int w;
+    /*private int a = Plateau.getA();
+    private int b = Plateau.getB();
+    private int c = Plateau.getC();*/
 
 	public ArrayList<Obstacle> getObstacles() {
 		return obstacles;
@@ -53,7 +58,7 @@ public class Bird extends JPanel {
 			g.drawImage(background, 0, 0, Constantes.largeur_ecran, Constantes.hauteur_ecran, null);
 
 
-			// dessin de la trajectoire en pointillés
+			// dessin de la trajectoire en pointillï¿½s
 
 			g.setColor(Color.gray);
 			for (int i : passage.keySet())
@@ -65,7 +70,7 @@ public class Bird extends JPanel {
 			g.drawImage(bird, posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau,null);
 
 
-			//dessin des obstacles et détection des collisions
+			//dessin des obstacles et dï¿½tection des collisions
 
 			g.setColor(Constantes.couleur_obstacle);
 			for(Obstacle e : obstacles){
@@ -83,6 +88,7 @@ public class Bird extends JPanel {
 				}	
 			}
 		
+			
 
 		}else{
 
@@ -93,12 +99,20 @@ public class Bird extends JPanel {
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 
-			// dessin de la trajectoire en pointillés
+			// dessin de la trajectoire en pointillï¿½s
 
 			g.setColor(Color.gray);
 			for (int i : passage.keySet())
 				g.fillOval(i + Constantes.taille_oiseau/2, passage.get(i) + Constantes.taille_oiseau/2, 3, 3);
 
+			
+			// dessin de la tengante
+			
+			/*for (int p=-50; p<Constantes.largeur_ecran; p++){
+		    	z = (int) ((int) (2*a*p+(a-b+c))*(p-a)+ ((a * Math.pow(p, 2) + (a-b+c)* p +5)));
+		    	w = (int) ((int) (2*a*(p+1)+(a-b+c))*((p+1)-a)+ ((a * Math.pow((p+1), 2) + (a-b+c)* (p+1) +5)));
+		    	g.fillRect(p, z, p+1, w);
+		    }*/
 
 			// dessin de l'oiseau
 
@@ -106,7 +120,7 @@ public class Bird extends JPanel {
 			g.drawOval(posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau);
 
 
-			//dessin des obstacles et détection des collisions
+			//dessin des obstacles et dï¿½tection des collisions
 
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
