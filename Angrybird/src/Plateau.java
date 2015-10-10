@@ -38,9 +38,8 @@ public class Plateau extends JFrame{
 	private void go() {
 	
 		//position de départ de l'oiseau
-		
-		pan.setPosY(550);
-		pan.setPosX(50);
+		pan.setPosY(500);
+		pan.setPosX(80);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
 	    int t =-30;

@@ -68,6 +68,11 @@ public class Bird extends JPanel {
 			// dessin de l'oiseau
 
 			g.drawImage(bird, posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau,null);
+			
+			
+			// dessin du lance-pierres
+			
+			g.drawImage(slingshot, 80, 367, 100, 150, null);
 
 
 			//dessin des obstacles et d�tection des collisions
@@ -107,7 +112,7 @@ public class Bird extends JPanel {
 				g.fillOval(i + Constantes.taille_oiseau/2, passage.get(i) + Constantes.taille_oiseau/2, 3, 3);
 
 			
-			// dessin de la tengante
+			// dessin de la tangente
 			
 			/*for (int p=-50; p<Constantes.largeur_ecran; p++){
 		    	z = (int) ((int) (2*a*p+(a-b+c))*(p-a)+ ((a * Math.pow(p, 2) + (a-b+c)* p +5)));
@@ -119,7 +124,7 @@ public class Bird extends JPanel {
 
 			g.setColor(Color.blue);
 			g.drawOval(posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau);
-
+			
 
 			//dessin des obstacles et d�tection des collisions
 
@@ -167,6 +172,7 @@ public class Bird extends JPanel {
 			background = ImageIO.read(new File("img/background.jpg"));
 			slingshot = ImageIO.read(new File("img/slingshot.png"));
 			obstacle = ImageIO.read(new File("img/caisse.png"));
+			slingshot = ImageIO.read(new File("img/slingshot.png"));
 		} catch (Exception e) {
 			e.getMessage();
 		}
