@@ -77,6 +77,7 @@ public class Bird extends JPanel {
 				if(e.isActif()){
 					if(e instanceof ObstacleMouvant){
 						((ObstacleMouvant) e).moveY();
+						((ObstacleMouvant) e).moveX();
 						}
 					g.drawImage(obstacle, e.getX(), e.getY(), Constantes.taille_obstacle, Constantes.taille_obstacle, null);
 				}else{
@@ -125,9 +126,12 @@ public class Bird extends JPanel {
 			for(Obstacle e : obstacles){
 				if(e.isActif()){
 					g.setColor(Constantes.couleur_obstacle);
+					
 					if(e instanceof ObstacleMouvant){
 						((ObstacleMouvant) e).moveY();
-						}
+						((ObstacleMouvant) e).moveX();
+					}
+					
 					g.drawOval(e.getX(),e.getY(),Constantes.taille_obstacle,Constantes.taille_obstacle);
 				}else{
 					g.setColor(Constantes.couleur_obstacle_touche);

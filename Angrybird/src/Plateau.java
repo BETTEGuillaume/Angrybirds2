@@ -15,12 +15,13 @@ public class Plateau extends JFrame{
 		this.setTitle(Constantes.titre);
 		this.setSize(Constantes.largeur_ecran, Constantes.hauteur_ecran);
 		
+	    initObstacles();
+		
+	    this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	    this.setContentPane(pan);
 	    this.setVisible(true);
-	    
-	    initObstacles();
 	    
 	    
 	    //tant qu'il reste des obstacles encore actifs
@@ -39,7 +40,7 @@ public class Plateau extends JFrame{
 		//position de départ de l'oiseau
 		
 		pan.setPosY(550);
-		pan.setPosX(-50);
+		pan.setPosX(50);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
 	    int t =-30;
@@ -95,9 +96,6 @@ public class Plateau extends JFrame{
 	    new Plateau();
 	  }
 	  
-	  
-	  
-	  
 	  /**
 	   * Cette fonction parcourt la liste des obstacles pour déterminer si il en reste 
 	   * au moins un d'actif.
@@ -124,8 +122,13 @@ public class Plateau extends JFrame{
 		  Obstacle cible4 = new Obstacle(690,368);
 		  Obstacle cible5 = new Obstacle(700,468);
 		  
-		  ObstacleMouvant cibletest = new ObstacleMouvant(900,20);
-		  cibletest.setLimites_y(new int[]{20,468});
+		  ObstacleMouvant ciblem1 = new ObstacleMouvant(900,20);
+		  ciblem1.setLimites_x(new int[]{900,900});
+		  ciblem1.setLimites_y(new int[]{20,468});		  
+		  
+		  ObstacleMouvant ciblem2 = new ObstacleMouvant(200,468);
+		  ciblem2.setLimites_x(new int[]{200,500});  
+		  ciblem2.setLimites_y(new int[]{468,468});
 
 		  
 		  pan.getObstacles().add(cible);
@@ -134,7 +137,8 @@ public class Plateau extends JFrame{
 		  pan.getObstacles().add(cible4);
 		  pan.getObstacles().add(cible5);
 		  
-		  pan.getObstacles().add(cibletest);
+		  pan.getObstacles().add(ciblem1);
+		  pan.getObstacles().add(ciblem2);
 	  }
 
 

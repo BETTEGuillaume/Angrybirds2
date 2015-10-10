@@ -9,7 +9,6 @@ public class Obstacle {
 	
 	/**
 	 * Constructeur Obstacle(int,int)
-	 * L'obstacle est activé par défaut, et sa couleur se trouve dans la classe Constantes.
 	 * 
 	 * @param x Coordonnée en x de l'obstacle
 	 * @param y Coordonnée en y de l'obstacle
@@ -25,7 +24,7 @@ public class Obstacle {
 	 * 
 	 * @param x Coordonnée en x de l'obstacle
 	 * @param y Coordonnée en y de l'obstacle
-	 * @param b Activation de l'obstacle
+	 * @param b Etat d'activation de l'obstacle
 	 */
 	public Obstacle(int x, int y, boolean b){
 		this.x=x;
