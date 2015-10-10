@@ -43,8 +43,8 @@ public class Bird extends JPanel {
 		initimg();
 	}
 
-	private int posX = -50;
-	private int posY = 550;
+	private int posX = Constantes.origineX;
+	private int posY = Constantes.origineY;
 	private Map<Integer, Integer> passage = new HashMap<>();
 
 

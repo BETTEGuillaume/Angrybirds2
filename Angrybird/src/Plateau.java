@@ -16,7 +16,7 @@ public class Plateau extends JFrame{
 		this.setSize(Constantes.largeur_ecran, Constantes.hauteur_ecran);
 		
 	    initObstacles();
-		
+
 	    this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
@@ -38,8 +38,8 @@ public class Plateau extends JFrame{
 	private void go() {
 	
 		//position de départ de l'oiseau
-		pan.setPosY(500);
-		pan.setPosX(80);
+		pan.setPosY(Constantes.origineY);
+		pan.setPosX(Constantes.origineX);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
 	    int t =-30;
@@ -56,7 +56,7 @@ public class Plateau extends JFrame{
 	        //y = (int) (a * Math.pow(t, 2) + b* t +c+1);	    
 	    	
 	    	//test Rémy
-	        y = (int) (a * Math.pow(t, 2) + (a-b+c)* t +5);	        
+	        y = (int) (a * Math.pow(t, 2) + (a-b+c)*t);	        
 	    	x+=d;
 	    	
 	    	//y = (int) (a* Math.pow(t, 3) + b*t +c);
