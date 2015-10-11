@@ -42,6 +42,7 @@ public class Plateau extends JFrame{
 		pan.setPosX(Constantes.origineX);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
+	    //t valeur 0 qui permet de partir du point 0
 	    int t =0;
 	    
 	    Random r = new Random();
@@ -49,6 +50,8 @@ public class Plateau extends JFrame{
 	    int b = r.nextInt(5);
 	    int c = r.nextInt(5);
 	    int d = r.nextInt(20)+30;
+	    //ajout de la variable G qui permet la courbe 
+	    //(je ne sais pas trop a quoi elle sert mais grace a ça on part toujours du même point
 	    int g=-40;
 	    do{	    
 	    	t++;
