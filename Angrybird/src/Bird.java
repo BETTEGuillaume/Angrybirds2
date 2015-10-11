@@ -70,6 +70,7 @@ public class Bird extends JPanel {
 			g.drawImage(bird, posX, posY, Constantes.taille_oiseau, Constantes.taille_oiseau,null);
 			
 			
+			
 			// dessin du lance-pierres
 			
 			g.drawImage(slingshot, 80, 367, 100, 150, null);

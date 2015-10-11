@@ -42,24 +42,26 @@ public class Plateau extends JFrame{
 		pan.setPosX(Constantes.origineX);
 		
 	    int x = pan.getPosX(), y = pan.getPosY();
-	    int t =-40;
+	    int t =0;
 	    
 	    Random r = new Random();
-	    int a = (r.nextInt(6)+1);  
-	    int b = r.nextInt(6);
-	    int c = r.nextInt(6);
+	    int a = (r.nextInt(5)+1);  
+	    int b = r.nextInt(5);
+	    int c = r.nextInt(5);
 	    int d = r.nextInt(20)+30;
-	    
+	    int g=-40;
 	    do{	    
 	    	t++;
-
+	    	g++;
 	        //y = (int) (a * Math.pow(t, 2) + b* t +c+1);	    
 	    	
 	    	//test Rémy
 	    	// y = (int) (a * Math.pow(t, 2) + (a-b+c)*t);	   
 	    	//test Omar ax²+bx+c
-	    	y = (int) (a * Math.pow(t, 2) + b*t + c);	  
 	    	
+	    	
+	    	y = ((int) (a * Math.pow(g, 2) - b*t - c));	  
+	    	System.out.println(y);
 	    	x+=d;
 	    	
 	    	//y = (int) (a* Math.pow(t, 3) + b*t +c);
@@ -80,7 +82,7 @@ public class Plateau extends JFrame{
 	      pan.repaint();
 
 	      try {
-	    	  Thread.sleep(40);
+	    	  Thread.sleep(100);
 	      } catch (InterruptedException e) {
 	    	  e.printStackTrace();
 	      }
