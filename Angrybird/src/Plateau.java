@@ -14,7 +14,6 @@ public class Plateau extends JFrame{
 		this.echelle = Constantes.echelle;
 		this.setTitle(Constantes.titre);
 		this.setSize(Constantes.largeur_ecran, Constantes.hauteur_ecran);
-		
 	    initObstacles();
 
 	    this.setResizable(false);
@@ -22,6 +21,7 @@ public class Plateau extends JFrame{
 	    this.setLocationRelativeTo(null);
 	    this.setContentPane(pan);
 	    this.setVisible(true);
+	    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    
 	    
 	    //tant qu'il reste des obstacles encore actifs
@@ -29,14 +29,9 @@ public class Plateau extends JFrame{
 	    	go();
 	    }
 	}
-	
-	/**
-	 * La fonction go() est la boucle principale du programme, dans laquelle se font
-	 * les incrémentations de x et y, le calcul des points de la trajectoire, et
-	 * l'appel de la fonction 'repaint' de l'oiseau.
-	 */
+
 	private void go() {
-	
+		
 		//position de départ de l'oiseau
 		pan.setPosY(Constantes.origineY);
 		pan.setPosX(Constantes.origineX);
@@ -144,8 +139,6 @@ public class Plateau extends JFrame{
 		  pan.getObstacles().add(cible4);
 		  pan.getObstacles().add(cible5);
 		  
-		  pan.getObstacles().add(ciblem1);
-		  pan.getObstacles().add(ciblem2);
 	  }
 
 
